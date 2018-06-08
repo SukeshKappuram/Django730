@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%}Listen{% endblock%}</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="border-radius:0;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Listen</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li> <a href="#"><span class="glyphicon glyphicon-cd"></span> &nbsp Albums</a></li>
+      <li> <a href="#"><span class="glyphicon glyphicon-music"></span>&nbsp Songs</a></li>
+      <li><a href="#"><i class="fas fa-microphone"></i>&nbsp Artists</a></li>
+    </ul>
+
+        <form class="navbar-form navbar-left" role="search" action="#">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="searchq">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'music:albumAdd'%}"><span class="glyphicon glyphicon-plus"></span> Add Album</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+            </div>
+    </div>
+</nav>
+{% block content%}
+{% endblock %}
+</body>
+</html>
