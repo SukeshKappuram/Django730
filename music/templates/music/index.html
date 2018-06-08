@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
+{% extends 'music/base.html'%}
+{% block content%}
 {% if albums%}
     <ul>
         {% for album in albums%}
-        <li><a href="{% url 'detail' album.id %}">{{album.title}}</a></li>
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="{{album.album_logo.url}}" alt="Card image cap" style="width:200px;height:200px">
+            <div class="card-body">
+                <h4 class="card-title">{{album.title}} - {{album.year}}</h4>
+                <p class="card-text">{{album.singer}}</p>
+                <a href="{% url 'music:detail' album.id %}" class="btn btn-primary">View Album</a>
+                <form action="{% url 'music:album-delete' album.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="album_id" value="{{ album.id }}"/>
+                    <button type="submit" class="btn btn-danger btn-small">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
         {% endfor %}
     </ul>
 {% else %}
     <h1>NO Albums</h1>
 {% endif %}
-</body>
-</html>
+{% endblock%}

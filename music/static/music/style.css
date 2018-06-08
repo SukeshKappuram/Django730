@@ -1,0 +1,28 @@
+body{
+    background-image:url(images/background.jpg);
+    background-size:100% auto;
+}
+.navbar{
+    border-radius:0;
+}
+.navbar-brand{
+    font-family:'Satisfy',cursive;
+}
+
+#details{
+    background-size:100% auto
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes details {
+    50% {background-position: center;}
+}
+
+@keyframes details {
+    50% {background-position: center;}
+}

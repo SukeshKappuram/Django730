@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-
+{% extends 'music/base.html'%}
+{% block title%}Album Details{% endblock%}
+{% block content%}
+<div class="container">
     <h1>Details of the album</h1>
-
-        <img src="{{album.album_logo}}" style="max-width:70%"/>
-
-    <h1>{{album.title}} {{album.year}}</h1>
-    <h2>{{album.singer}}</h2>
-
+    <div class="jumbotron" id="details" style="background-image:url('{{album.album_logo}}');">
+    <h1 class="display-3">{{album.title}} {{album.year}}</h1>
+    <p class="lead">{{album.singer}}</p>
+    <hr class="my-4">
     {% if error_message %}
         <p>{{error_message}}</p>
     {% endif%}
-    <form action="{ url 'music:fav' album.id}" method="post">
+    <form action="" method="post">
         {% csrf_token %}
 
     <ul>
         {% for song in album.song_set.all %}
-            <li><input type="radio" id="song{{forloop.counter}}" name="song" value="{{song.id}}"/>{{song.song_title}} - {{song.file_type}}
+            <li><input type="radio" id="song{{forloop.counter}}" name="song" value="{{song.id}}"/> {{song.song_title}} - {{song.file_type}}
                 {% if song.is_fav %}
                         <i class="fa fa-heart"></i>
                 {% endif %}
@@ -30,7 +23,8 @@
         {% endfor %}
     </ul>
 
-        <input type="submit" value="Add to fav"/><i class="fa fa-heart"></i>
+        <button class="btn btn-primary btn-lg" type="submit" >Add to <i class="fa fa-heart" style="color:red"></i></button>
         </form>
-</body>
-</html>
+</div>
+</div>
+{% endblock%}
